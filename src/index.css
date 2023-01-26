@@ -6,11 +6,15 @@
    /* Typography */
   --family: 'Josefin Sans', sans-serif;
   --fs-md: 18px;
+  --fs-hd: 23px;
   --fw-normal: 400;
   --fw-bold: 700;
+  --colors-text: rgb(251, 252, 254);
 
   /* other */
   --colors-main: rgb(166,128,241);
+  --shadow: rgb(15,15,23, 0.2) 0 0 8px;
+  --radii: 5px;
 }
 
 body[data-theme='dark'] {
