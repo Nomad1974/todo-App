@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 :root {
@@ -9,20 +11,26 @@
   --fs-hd: 23px;
   --fw-normal: 400;
   --fw-bold: 700;
-  --colors-text: rgb(251, 252, 254);
+  --text-color: rgb(76,75,89);
+  --colors-text-title: rgb(149,148,153);
+  --colors-title_hover: rgb(76,77,95);
+  
 
   /* other */
+  --colors-icon: rgb(236,235,240);
   --colors-main: rgb(166,128,241);
-  --shadow: rgb(15,15,23, 0.2) 0 0 8px;
+  --shadow: rgb(119, 119, 123, 0.08) 0px 6px 8px;
   --radii: 5px;
+  --colors-bg: rgb(250,250,250);
+  --colors-list-bg: rgb(255,255,255);
+  --color: rgb(229,228,236);
 }
 
 body[data-theme='dark'] {
   --colors-text: rgb(210, 212, 235);
   --colors-bg: rgb(24,24,36);
-  --colors-list-bg: rgb(251, 252, 254);
   --colors-text-completed: rgb(103,105,128);
-  --colors-text-title: rgb(92,94,119);
+  
   --colors-title_hover: rgb(92,94,119);
   --shadow: rgb(15,15,23, 0.2) 0 0 8px;
 }
@@ -32,9 +40,8 @@ body[data-theme='light'] {
   --colors-bg: rgb(250,250,250);
   --colors-list-bg: rgb(255,255,255);
   --colors-completed: rgb(216,216,218);
-  --colors-text-title: rgb(189,190,195);
   --colors-title_hover: rgb(76,77,95);
-  --shadow: rgb(229,228,236 0.2) 0 8px 24px;
+  --shadow: rgb(119, 119, 123, 0.08) 0px 6px 8px;
 }
 
 body {
@@ -42,5 +49,5 @@ body {
   font-family: var(--family);
   color: var(--colors-text);
   font-weight: var(--fw-normal);
-  background-color: var(--colors-bg);
+  /* background-color: var(--colors-bg); */
 }

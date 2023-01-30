@@ -1,18 +1,21 @@
 import styled from "styled-components";
-import { ReactComponent as Icon} from "../images/icon-sun.svg";
+import { ReactComponent as Icon} from "../icons/icon-sun.svg";
+
+const Wrapper = styled.div`
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    `;
+
+const Hading = styled.span`
+    color: rgb(251, 252, 254);
+    font-size: var(--fs-hd);
+    font-weight: var(--fw-bold);
+`;
+
 
 const Header = () => {
-    const Wrapper = styled.div`
-        display: flex;
-        width: 540px;
-        flex-direction: row;
-        justify-content: space-between;
-    `
-    const Hading = styled.span`
-        color: var(--colors-text);
-        font-size: var(--fs-hd);
-        font-weight: var(--fw-bold);
-    `;
 
     return (
         <Wrapper>
