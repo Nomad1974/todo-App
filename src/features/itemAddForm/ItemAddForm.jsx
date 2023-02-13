@@ -14,9 +14,9 @@ const Input = styled.input.attrs({
     border-radius: var(--radii);
     border: none;
     outline: none;    
+    color: var(--colors-text);
     background-color: var(--colors-list-bg);
     font-size: var(--fs-md);
-       
 `;
 
     const Wrapper = styled.span`
@@ -30,9 +30,8 @@ const Input = styled.input.attrs({
         }
     `;
 
-    /* margin: 20px 26px; */
     const Icon = styled.div`
-        margin: auto;
+        margin: auto 20px;
         border: 1px solid var(--colors-icon);
         border-radius: 50%;
         width: 25px;

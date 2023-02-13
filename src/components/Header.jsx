@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { ReactComponent as Icon} from "../icons/icon-sun.svg";
+
+import ThemeSwitcher from "../theme/ThemeSwitcher";
 
 const Wrapper = styled.div`
     display: flex;
@@ -20,7 +21,7 @@ const Header = () => {
     return (
         <Wrapper>
             <Hading>TODO</Hading>
-            <Icon style={{cursor: "pointer"}}/>
+            <ThemeSwitcher />
         </Wrapper>
     );
 }

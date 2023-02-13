@@ -47,7 +47,6 @@ const TodoItemList = () => {
     <Content>
         <TodoItem id="1" />
         <TodoItem id="2" />
-        <TodoItem id="3" />
         <LastItem>
             <FirstElem>5 items left</FirstElem>
             <LastElem>Clear Completed</LastElem>
