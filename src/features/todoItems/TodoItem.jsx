@@ -1,8 +1,18 @@
 import styled from "styled-components";
+import { ReactComponent as Cross } from "../../icons/icon-cross.svg";
+
+const IconWrapper = styled.span`
+    margin: auto 25px;
+    cursor: pointer;
+    @media (max-width: 768px) {
+        margin: auto 20px;
+    }
+`;
 
 const Item = styled.li`
     display: flex;
     place-content: baseline;
+    justify-content: space-between;
     height: 65px;
     border-bottom: 1px solid var(--colors-list-bottom-borber);
     color: var(--colors-text);
@@ -60,6 +70,9 @@ const TodoItem = () => {
                 <StyledCheckbox />
                 <Span>first todo and last one also</Span>
             </Label>
+            <IconWrapper>
+                <Cross />
+            </IconWrapper>
         </Item> 
     );
 }

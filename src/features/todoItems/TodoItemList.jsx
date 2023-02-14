@@ -12,13 +12,14 @@ const Content = styled.ul`
     box-shadow: var(--shadow);
 `;
 
+/* padding-top: 21px; */
 const LastItem = styled.span`
     height: 65px;
-    padding-top: 21px;
     color: var(--colors-text-title);
     display: flex;
     flex-direction: row; 
     justify-content: space-around;
+    align-items: center;
     @media (max-width: 768px) {
         height: 45px;
         padding-top: 10px;

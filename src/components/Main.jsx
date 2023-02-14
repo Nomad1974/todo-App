@@ -7,6 +7,7 @@ import mobile from "../images/bg-mobile-light.jpg";
 const Wrapper = styled.section`
 
     max-width: 100%;
+    height: 100%;
     padding-bottom: 50px;
     background-color: var(--colors-bg);
     background-image: url(${desktop});

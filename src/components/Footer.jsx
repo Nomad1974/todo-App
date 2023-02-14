@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
+/* padding-top: 21px; */
 const Wrapper = styled.footer`
+    display: flex;
     margin-top: 20px;
-    padding-top: 21px;
+    margin-bottom: 80px;
     background-color: var(--colors-bg);
     border-radius: var(--radii);
     background-color: var(--colors-list-bg);
@@ -13,10 +15,11 @@ const Wrapper = styled.footer`
         padding-top: 10px;
     }
 `;
-/* padding: 13px; */
+
 const FilterElem = styled.span`
     margin: auto 0;
     display: flex;
+    width: 100%;
     flex-direction: row; 
     justify-content: space-around;
 `;
