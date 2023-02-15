@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { clearComplete, removeTodo } from "./todoSlice";
 
 import { ReactComponent as Cross } from "../../icons/icon-cross.svg";
-
-//import TodoItem from "./TodoItem";
 
 const Content = styled.ul`
     list-style-type: none;
@@ -107,7 +106,7 @@ const Label = styled.label`
 
 const TodoItemList = () => {
     const todos = useSelector(state => state.todos);
-    console.log(todos);
+    const dispatch = useDispatch();
 
     return ( 
     <Content>
@@ -118,14 +117,16 @@ const TodoItemList = () => {
                     <StyledCheckbox />
                     <Span>{todo.title}{" "}</Span>
                 </Label>
-                <IconWrapper>
+                <IconWrapper onClick={() => dispatch(removeTodo(todo.id))}>
                     <Cross />
                 </IconWrapper>
             </Item>
         ))}
         <LastItem>
             <FirstElem>5 items left</FirstElem>
-            <LastElem>Clear Completed</LastElem>
+            <LastElem onClick={() => dispatch(clearComplete())}>
+                Clear Completed
+            </LastElem>
         </LastItem>
     </Content>
     );
