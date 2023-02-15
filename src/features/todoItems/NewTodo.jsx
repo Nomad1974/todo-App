@@ -1,11 +1,14 @@
 import styled from "styled-components";
-// сделать медиа запросы на уменьшение 
+import { useDispatch } from "react-redux";
+import { addTodo } from "./todoSlice";
+
 const Form = styled.form`
-    margin-top: 50px;
+    margin-top: 20px;
 `;
 
 const Input = styled.input.attrs({
     type: 'text',
+    name: 'title',
     placeholder: ' What I have to do',
 })`
     margin: auto 0;
@@ -42,9 +45,19 @@ const Input = styled.input.attrs({
         }
     `;
 
-const ItemAddForm = () => {
+const NewTodo = () => {
+    const dispatch = useDispatch();
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        dispatch(addTodo(event.target.title.value));
+        // очищаем инпут
+        event.target.reset();
+    }
+    
+
     return (  
-        <Form>
+        <Form onSubmit={handleSubmit}>
             <Wrapper>
                 <Icon />
                 <Input></Input>
@@ -53,4 +66,4 @@ const ItemAddForm = () => {
     );
 }
 
-export default ItemAddForm;
+export default NewTodo;

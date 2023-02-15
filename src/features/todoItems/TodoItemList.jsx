@@ -1,6 +1,9 @@
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
-import TodoItem from "./TodoItem";
+import { ReactComponent as Cross } from "../../icons/icon-cross.svg";
+
+//import TodoItem from "./TodoItem";
 
 const Content = styled.ul`
     list-style-type: none;
@@ -12,9 +15,8 @@ const Content = styled.ul`
     box-shadow: var(--shadow);
 `;
 
-/* padding-top: 21px; */
 const LastItem = styled.span`
-    height: 65px;
+    height: 50px;
     color: var(--colors-text-title);
     display: flex;
     flex-direction: row; 
@@ -42,12 +44,85 @@ const LastElem = styled.span`
         color: var(--colors-title_hover);
     }
 `;
+const IconWrapper = styled.span`
+    margin: auto 25px;
+    cursor: pointer;
+    @media (max-width: 768px) {
+        margin: auto 20px;
+    }
+`;
+
+const Item = styled.li`
+    display: flex;
+    place-content: baseline;
+    justify-content: space-between;
+    height: 65px;
+    border-bottom: 1px solid var(--colors-list-bottom-borber);
+    color: var(--colors-text);
+    font-size: var(--fs-md);
+    font-weight: var(--fw-normal);
+    @media (max-width: 768px) {
+        height: 45px;
+    }
+`;
+
+const Input = styled.input`
+    border: 0;
+    clip: rect(0 0 0 0);
+    clippath: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+`;
+
+const StyledCheckbox = styled.div`
+display: inline-block;
+    margin: 0 20px;
+    border: 1px solid rgb(236,235,240);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    : hover{
+        border-color: var(--colors-main);
+    }
+    @media (max-width: 768px) {
+        width: 20px;
+    height: 20px;
+    `;
+
+    const Span = styled.span`
+        cursor: pointer;
+        margin: auto 0;
+    `;
+
+const Label = styled.label`
+    display: flex;
+    align-items: center
+`;
 
 const TodoItemList = () => {
+    const todos = useSelector(state => state.todos);
+    console.log(todos);
+
     return ( 
     <Content>
-        <TodoItem id="1" />
-        <TodoItem id="2" />
+        {todos.map((todo) => (
+            <Item key={todo.id}>
+                <Label>
+                    <Input />
+                    <StyledCheckbox />
+                    <Span>{todo.title}{" "}</Span>
+                </Label>
+                <IconWrapper>
+                    <Cross />
+                </IconWrapper>
+            </Item>
+        ))}
         <LastItem>
             <FirstElem>5 items left</FirstElem>
             <LastElem>Clear Completed</LastElem>
