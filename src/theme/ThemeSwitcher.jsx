@@ -7,7 +7,7 @@ import { ReactComponent as DarkIcon } from '../icons/icon-moon.svg';
 
 const ThemeSwitcher = () => {
     const dispatch = useDispatch();
-    const theme = useSelector((state) => state.theme);
+    const theme = useSelector(state => state.theme);
 
     const toggleTheme = () =>
         dispatch(setTheme(theme === 'light' ? 'dark' : 'light'));
@@ -19,9 +19,9 @@ const ThemeSwitcher = () => {
     return (
         <div onClick={toggleTheme}>
             {theme === 'light' ? (
-                <LightIcon style={{ cursor: 'pointer' }} />
-            ) : (
                 <DarkIcon style={{ cursor: 'pointer' }} />
+            ) : (
+                <LightIcon style={{ cursor: 'pointer' }} />
             )}
         </div>
     );

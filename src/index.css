@@ -27,6 +27,8 @@ body[data-theme='dark'] {
   --colors-title_hover: rgb(92,94,119);
   --colors-list-bottom-borber: rgb(56,58,79);
   --shadow: rgb(15,15,23, 0.2) 0 0 8px;
+  --desktop: url(./images/bg-desktop-dark.jpg);
+  --mobile: url(./images/bg-mobile-dark.jpg);
 }
 
 body[data-theme='light'] {
@@ -37,6 +39,8 @@ body[data-theme='light'] {
   --colors-title_hover: rgb(76,77,95);
   --colors-list-bottom-borber: rgb(229, 228, 223);
   --shadow: rgb(119, 119, 123, 0.08) 0px 6px 8px;
+  --desktop: url(./images/bg-desktop-light.jpg);
+  --mobile: url(./images/bg-mobile-light.jpg);
 }
 
 body {
