@@ -85,7 +85,7 @@ const Span = styled.span`
         cursor: pointer;
         margin: auto 0;
     `;
-
+// добавляем стили пропсами
     const Label = styled.label`
     display: flex;
     align-items: center; 
@@ -134,7 +134,7 @@ const TodoItemList = (props) => {
                 <Item key={todo.id}>
                     <Label checked={todo.completed}>
                         <Input 
-                            onChange={() => dispatch(toggleTodo(todo.id))} {...props}/>
+                            onChange={() => dispatch(toggleTodo(todo.id))}/>
                         {todo.completed ? <StyledCompletedCheckbox><CheckedIcon /></StyledCompletedCheckbox> : <StyledCheckbox />}
                         <Span >
                             {todo.title} 
