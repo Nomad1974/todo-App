@@ -81,6 +81,18 @@ const Input = styled.input.attrs({
     width: 1px;
 `;
 
+const Span = styled.span`
+        cursor: pointer;
+        margin: auto 0;
+    `;
+
+    const Label = styled.label`
+    display: flex;
+    align-items: center; 
+    text-decoration: ${props => props.checked ? 'line-through': ''};
+    color: ${props => props.checked ? 'var(--colors-text-completed)' : ''};
+`;
+
 const StyledCompletedCheckbox = styled.div`
     display: flex;
     justify-content: center;
@@ -112,17 +124,7 @@ const StyledCheckbox = styled.div`
     height: 20px;
     `;
 
-    const Span = styled.span`
-        cursor: pointer;
-        margin: auto 0;
-    `;
-
-const Label = styled.label`
-    display: flex;
-    align-items: center
-`;
-
-const TodoItemList = () => {
+const TodoItemList = (props) => {
     const todos = useSelector(state => state.todos);
     const dispatch = useDispatch();
 
@@ -130,10 +132,9 @@ const TodoItemList = () => {
         <Content>
             {todos.map((todo) => (
                 <Item key={todo.id}>
-                    <Label >
+                    <Label checked={todo.completed}>
                         <Input 
-                            checked={todo.completed}
-                            onChange={() => dispatch(toggleTodo(todo.id))}/>
+                            onChange={() => dispatch(toggleTodo(todo.id))} {...props}/>
                         {todo.completed ? <StyledCompletedCheckbox><CheckedIcon /></StyledCompletedCheckbox> : <StyledCheckbox />}
                         <Span >
                             {todo.title} 

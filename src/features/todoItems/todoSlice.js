@@ -16,6 +16,7 @@ const todoSlice = createSlice({
                     id: nanoid(),
                     completed: false,
                     important: false,
+                    checked: false,
                 }
             })
         },
