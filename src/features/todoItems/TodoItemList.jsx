@@ -1,9 +1,10 @@
-import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { clearComplete, removeTodo, toggleTodo } from "./todoSlice";
+import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeTodo, selectVisibleTodos, toggleTodo } from './todoSlice';
 
-import { ReactComponent as Cross } from "../../icons/icon-cross.svg";
-import { ReactComponent as CheckedIcon } from "../../icons/icon-check.svg";
+import { ReactComponent as Cross } from '../../icons/icon-cross.svg';
+import { ReactComponent as CheckedIcon } from '../../icons/icon-check.svg';
+import ClearingComponent from './ClearingComponent';
 
 const Content = styled.ul`
     list-style-type: none;
@@ -15,35 +16,6 @@ const Content = styled.ul`
     box-shadow: var(--shadow);
 `;
 
-const LastItem = styled.span`
-    height: 50px;
-    color: var(--colors-text-title);
-    display: flex;
-    flex-direction: row; 
-    justify-content: space-around;
-    align-items: center;
-    @media (max-width: 768px) {
-        height: 45px;
-        padding-top: 10px;
-    }
-`;
-
-const FirstElem = styled.span`
-    place-content: center;
-    font-size: var(--fs-md);
-    font-weight: var(--fw-normal);
-    cursor: pointer;
-`;
-
-const LastElem = styled.span`
-    font-size: var(--fs-md);
-    font-weight: var(--fw-bold);
-    font-size: var(--fs-md);
-    cursor: pointer;
-    : hover {
-        color: var(--colors-title_hover);
-    }
-`;
 const IconWrapper = styled.span`
     margin: auto 25px;
     cursor: pointer;
@@ -65,9 +37,10 @@ const Item = styled.li`
         height: 45px;
     }
 `;
+
 // делаем чекбокс и скрываем его для стилизации своего компонента
 const Input = styled.input.attrs({
-    type: 'checkbox'
+    type: 'checkbox',
 })`
     border: 0;
     clip: rect(0 0 0 0);
@@ -82,15 +55,16 @@ const Input = styled.input.attrs({
 `;
 
 const Span = styled.span`
-        cursor: pointer;
-        margin: auto 0;
-    `;
+    cursor: pointer;
+    margin: auto 0;
+`;
+
 // добавляем стили пропсами
-    const Label = styled.label`
+const Label = styled.label`
     display: flex;
-    align-items: center; 
-    text-decoration: ${props => props.checked ? 'line-through': ''};
-    color: ${props => props.checked ? 'var(--colors-text-completed)' : ''};
+    align-items: center;
+    text-decoration: ${(props) => (props.checked ? 'line-through' : '')};
+    color: ${(props) => (props.checked ? 'var(--colors-text-completed)' : '')};
 `;
 
 const StyledCompletedCheckbox = styled.div`
@@ -125,7 +99,10 @@ const StyledCheckbox = styled.div`
     `;
 
 const TodoItemList = (props) => {
-    const todos = useSelector(state => state.todos);
+    const activeFilter = useSelector((state) => state.filter);
+    const todos = useSelector((state) =>
+        selectVisibleTodos(state, activeFilter)
+    );
     const dispatch = useDispatch();
 
     return (
@@ -133,26 +110,24 @@ const TodoItemList = (props) => {
             {todos.map((todo) => (
                 <Item key={todo.id}>
                     <Label checked={todo.completed}>
-                        <Input 
-                            onChange={() => dispatch(toggleTodo(todo.id))}/>
-                        {todo.completed ? <StyledCompletedCheckbox><CheckedIcon /></StyledCompletedCheckbox> : <StyledCheckbox />}
-                        <Span >
-                            {todo.title} 
-                        </Span>
+                        <Input onChange={() => dispatch(toggleTodo(todo.id))} />
+                        {todo.completed ? (
+                            <StyledCompletedCheckbox>
+                                <CheckedIcon />
+                            </StyledCompletedCheckbox>
+                        ) : (
+                            <StyledCheckbox />
+                        )}
+                        <Span>{todo.title}</Span>
                     </Label>
                     <IconWrapper onClick={() => dispatch(removeTodo(todo.id))}>
                         <Cross />
                     </IconWrapper>
                 </Item>
             ))}
-            <LastItem>
-                <FirstElem>5 items left</FirstElem>
-                <LastElem onClick={() => dispatch(clearComplete())}>
-                    Clear Completed
-                </LastElem>
-            </LastItem>
+            <ClearingComponent />
         </Content>
     );
-}
+};
 
 export default TodoItemList;

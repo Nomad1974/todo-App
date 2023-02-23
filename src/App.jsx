@@ -1,5 +1,5 @@
 
-import Footer from "./components/Footer";
+import Filter from "./features/filters/Filter";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import NewTodo from "./features/todoItems/NewTodo";
@@ -11,7 +11,7 @@ const App = () => {
             <Header />
             <NewTodo />
             <TodoItemList />
-            <Footer />
+            <Filter />
         </Main>
     );
 }
