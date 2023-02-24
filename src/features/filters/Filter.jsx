@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from './filterSlice';
+
+import useFilter from './useFilter';
 
 const Wrapper = styled.div`
     display: flex;
@@ -36,11 +36,8 @@ color: var(--colors-text-title);
 `;
 
 const Filter = () => {
-    const dispatch = useDispatch();
-    const activeFilter = useSelector((state) => state.filter);
-
-    const handleFilter = (value) => dispatch(setFilter(value));
-
+    const [activeFilter, handleFilter] = useFilter();
+    
     return (
         <Wrapper>
             <FilterElem>

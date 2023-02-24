@@ -4,7 +4,7 @@ import Container from "./Container";
 
 const Wrapper = styled.section`
     max-width: 100%;
-    height: 100%;
+    height: 100vh;
     padding-bottom: 50px;
     background-image: var(--desktop);
     background-color: var(--colors-bg);

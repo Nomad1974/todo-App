@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
-import { addTodo } from "./todoSlice";
+
+import useNewTodo from "./useNewTodo";
 
 const Form = styled.form`
     margin-top: 20px;
@@ -22,39 +22,31 @@ const Input = styled.input.attrs({
     font-size: var(--fs-md);
 `;
 
-    const Wrapper = styled.span`
-        display: flex;
-        flex-direction: row;
-        border-radius: var(--radii);
-        background-color: var(--colors-list-bg);
-        height: 65px;
-        @media (max-width: 768px) {
-            height: 45px;
-        }
-    `;
+const Wrapper = styled.span`
+    display: flex;
+    flex-direction: row;
+    border-radius: var(--radii);
+    background-color: var(--colors-list-bg);
+    height: 65px;
+    @media (max-width: 768px) {
+        height: 45px;
+    }
+`;
 
-    const Icon = styled.div`
-        margin: auto 20px;
-        border: 1px solid var(--colors-icon);
-        border-radius: 50%;
-        width: 25px;
-        height: 25px;
-        @media (max-width: 768px) {
-            width: 20px;
-        height: 20px;
-        }
-    `;
+const Icon = styled.div`
+    margin: auto 20px;
+    border: 1px solid var(--colors-icon);
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    @media (max-width: 768px) {
+        width: 20px;
+    height: 20px;
+    }
+`;
 
 const NewTodo = () => {
-    const dispatch = useDispatch();
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        dispatch(addTodo(event.target.title.value));
-        // очищаем инпут
-        event.target.reset();
-    }
-    
+    const [handleSubmit] = useNewTodo();
 
     return (  
         <Form onSubmit={handleSubmit}>

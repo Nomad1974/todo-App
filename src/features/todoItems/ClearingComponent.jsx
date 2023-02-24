@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { clearComplete } from "./todoSlice";
+
+import useClear from "./useClear";
 
 const LastItem = styled.span`
     height: 50px;
@@ -33,14 +33,12 @@ const LastElem = styled.span`
 `;
 
 const ClearingComponent = () => {
-    const dispatch = useDispatch();
-    const allTodos = useSelector(state => state.todos);
-    const activeTodos = allTodos.filter(todo => !todo.completed);
+    const [activeTodos, clearCompleted] = useClear();
 
     return ( 
     <LastItem>
         <FirstElem>{activeTodos.length} items left</FirstElem>
-        <LastElem onClick={() => dispatch(clearComplete())}>
+        <LastElem onClick={clearCompleted}>
             Clear Completed
         </LastElem>
     </LastItem>

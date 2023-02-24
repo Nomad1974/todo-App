@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
-import { removeTodo, selectVisibleTodos, toggleTodo } from './todoSlice';
 
 import { ReactComponent as Cross } from '../../icons/icon-cross.svg';
 import { ReactComponent as CheckedIcon } from '../../icons/icon-check.svg';
 import ClearingComponent from './ClearingComponent';
+import useTodoItemList from './useTodoItemList';
 
 const Content = styled.ul`
     list-style-type: none;
@@ -98,19 +97,15 @@ const StyledCheckbox = styled.div`
     height: 20px;
     `;
 
-const TodoItemList = (props) => {
-    const activeFilter = useSelector((state) => state.filter);
-    const todos = useSelector((state) =>
-        selectVisibleTodos(state, activeFilter)
-    );
-    const dispatch = useDispatch();
+const TodoItemList = () => {
+    const [todos, onDelete, onToggleTodo] = useTodoItemList();
 
     return (
         <Content>
             {todos.map((todo) => (
                 <Item key={todo.id}>
                     <Label checked={todo.completed}>
-                        <Input onChange={() => dispatch(toggleTodo(todo.id))} />
+                        <Input onChange={() => onToggleTodo(todo.id)} />
                         {todo.completed ? (
                             <StyledCompletedCheckbox>
                                 <CheckedIcon />
@@ -120,7 +115,7 @@ const TodoItemList = (props) => {
                         )}
                         <Span>{todo.title}</Span>
                     </Label>
-                    <IconWrapper onClick={() => dispatch(removeTodo(todo.id))}>
+                    <IconWrapper onClick={() => onDelete(todo.id)}>
                         <Cross />
                     </IconWrapper>
                 </Item>

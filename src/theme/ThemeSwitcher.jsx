@@ -1,20 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { setTheme } from './themeSlice';
 
+import useTheme from './useTheme';
 import { ReactComponent as LightIcon } from '../icons/icon-sun.svg';
 import { ReactComponent as DarkIcon } from '../icons/icon-moon.svg';
 
 const ThemeSwitcher = () => {
-    const dispatch = useDispatch();
-    const theme = useSelector(state => state.theme);
-
-    const toggleTheme = () =>
-        dispatch(setTheme(theme === 'light' ? 'dark' : 'light'));
-
-    useEffect(() => {
-        document.body.setAttribute('data-theme', theme);
-    }, [theme]);
+    const [theme, toggleTheme] = useTheme();
 
     return (
         <div onClick={toggleTheme}>
