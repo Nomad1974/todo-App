@@ -27,13 +27,13 @@ const Item = styled.li`
     display: flex;
     place-content: baseline;
     justify-content: space-between;
-    height: 65px;
+    min-height: 65px;
     border-bottom: 1px solid var(--colors-list-bottom-borber);
     color: var(--colors-text);
     font-size: var(--fs-md);
     font-weight: var(--fw-normal);
     @media (max-width: 768px) {
-        height: 45px;
+        min-height: 45px;
     }
 `;
 
@@ -56,6 +56,7 @@ const Input = styled.input.attrs({
 const Span = styled.span`
     cursor: pointer;
     margin: auto 0;
+    padding: 1px;
 `;
 
 // добавляем стили пропсами
@@ -71,7 +72,7 @@ const StyledCompletedCheckbox = styled.div`
     justify-content: center;
     align-items: center;
     margin: 0 20px;
-    width: 25px;
+    min-width: 25px;
     height: 25px;
     border-radius: 50%;
     cursor: pointer;
@@ -85,7 +86,7 @@ const StyledCheckbox = styled.div`
     display: inline-block;
     margin: 0 20px;
     border: 1px solid rgb(236,235,240);
-    width: 25px;
+    min-width: 25px;
     height: 25px;
     border-radius: 50%;
     cursor: pointer;

@@ -8,9 +8,12 @@ const useNewTodo = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(addTodo(event.target.title.value));
-        // очищаем инпут
-        event.target.reset();
+        // защита от создания пустой тудушки
+        if (event.target.title.value) {
+            dispatch(addTodo(event.target.title.value));
+            // очищаем инпут
+            event.target.reset();
+        }
     }
 
     return [handleSubmit];
